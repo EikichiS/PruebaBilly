@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<DTE version="1.0">
+  <Documento ID="null">
+    <Cliente>null</Cliente>
+    <Tipo>null</Tipo>
+    <TotalAPagar>0,00</TotalAPagar>
+    <MedioPago>null</MedioPago>
+  </Documento>
+</DTE>
