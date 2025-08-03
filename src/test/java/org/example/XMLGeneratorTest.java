@@ -25,7 +25,6 @@ public class XMLGeneratorTest {
 
     @Test
     public void testGenerateXML_CreatesValidFile() throws IOException {
-        // 1. Preparar datos de prueba
         Document doc = new Document();
         doc.setId("TEST-001");
         doc.setName("Cliente Prueba");
@@ -33,25 +32,20 @@ public class XMLGeneratorTest {
         doc.setTotalAPagar(1500.75);
         doc.setMedioPago("TARJETA");
 
-        // 2. Ejecutar
         xmlGenerator.generateXML(doc);
 
-        // 3. Verificar
         Path expectedFile = Paths.get("output/TEST-001.xml");
         assertTrue("El archivo XML debe existir", Files.exists(expectedFile));
 
-        // 4. Leer y validar contenido
         String content = new String(Files.readAllBytes(expectedFile));
         assertTrue(content.contains("<Documento ID=\"TEST-001\">"));
         assertTrue(content.contains("<TotalAPagar>1500,75</TotalAPagar>"));
 
-        // 5. Limpiar (se ejecutará también en @After)
         Files.deleteIfExists(expectedFile);
     }
 
     @After
     public void tearDown() throws IOException {
-        // Limpiar archivos generados por las pruebas
         Files.deleteIfExists(Paths.get("output/TEST-001.xml"));
     }
 }

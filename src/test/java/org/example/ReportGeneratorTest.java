@@ -42,14 +42,14 @@ public class ReportGeneratorTest {
         assertTrue(htmlContent.contains("<h1>Reporte de Cuadratura</h1>"));
         assertTrue(htmlContent.contains("<table>"));
 
-        assertTrue(htmlContent.contains("<td>5</td>")); // PAT count
-        assertTrue(htmlContent.contains("<td>12500,75</td>")); // PAT amount
-        assertTrue(htmlContent.contains("<td>3</td>")); // PAC count
-        assertTrue(htmlContent.contains("<td>7800,50</td>")); // PAC amount
-        assertTrue(htmlContent.contains("<td>2</td>")); // Empty count
-        assertTrue(htmlContent.contains("<td>3200,25</td>")); // Empty amount
-        assertTrue(htmlContent.contains("<td>10</td>")); // Total count
-        assertTrue(htmlContent.contains("<td>23501,50</td>")); // Total amount
+        assertTrue(htmlContent.contains("<td>5</td>"));
+        assertTrue(htmlContent.contains("<td>12500,75</td>"));
+        assertTrue(htmlContent.contains("<td>3</td>"));
+        assertTrue(htmlContent.contains("<td>7800,50</td>"));
+        assertTrue(htmlContent.contains("<td>2</td>"));
+        assertTrue(htmlContent.contains("<td>3200,25</td>"));
+        assertTrue(htmlContent.contains("<td>10</td>"));
+        assertTrue(htmlContent.contains("<td>23501,50</td>"));
     }
 
     @Test
@@ -64,10 +64,10 @@ public class ReportGeneratorTest {
         Path reportPath = Paths.get("output", REPORT_FILE);
         String htmlContent = new String(Files.readAllBytes(reportPath));
 
-        assertTrue(htmlContent.contains("<td>0</td>")); // PAC count
-        assertTrue(htmlContent.contains("<td>0,00</td>")); // PAC amount
-        assertTrue(htmlContent.contains("<td>0</td>")); // Empty count
-        assertTrue(htmlContent.contains("<td>0,00</td>")); // Empty amount
+        assertTrue(htmlContent.contains("<td>0</td>"));
+        assertTrue(htmlContent.contains("<td>0,00</td>"));
+        assertTrue(htmlContent.contains("<td>0</td>"));
+        assertTrue(htmlContent.contains("<td>0,00</td>"));
     }
 
 
