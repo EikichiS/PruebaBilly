@@ -29,15 +29,12 @@ public class DocumentProcessor {
             Document documento = objectMapper.readValue(jsonDocument, Document.class);
             documentos.add(documento);
 
-            // Actualizar resumen por medio de pago
             summary.computeIfAbsent(documento.getMedioPago(), k -> new PaymentSummary())
                     .addPayment(documento.getTotalAPagar());
 
-            // Generar XML
             xmlGenerator.generateXML(documento);
         }
 
-        // Generar reporte
         reportGenerator.generateReport(summary);
     }
 

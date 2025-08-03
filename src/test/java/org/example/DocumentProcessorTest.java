@@ -39,7 +39,6 @@ public class DocumentProcessorTest {
         MockitoAnnotations.initMocks(this);
         documentProcessor = new DocumentProcessor();
 
-        // Inyecta mocks via reflection
         Field xmlGeneratorField = DocumentProcessor.class.getDeclaredField("xmlGenerator");
         xmlGeneratorField.setAccessible(true);
         xmlGeneratorField.set(documentProcessor, xmlGenerator);
@@ -58,7 +57,6 @@ public class DocumentProcessorTest {
         String testJson = createTestJson();
         String testDocumentJson = "{\"medioPago\":\"PAT\",\"totalAPagar\":100,50}";
 
-        // Configurar mocks
         Document testDocument = new Document();
         testDocument.setMedioPago("PAT");
         testDocument.setTotalAPagar(100.50);
@@ -75,10 +73,8 @@ public class DocumentProcessorTest {
         when(mockContentNode.asText()).thenReturn(createTestGzipContent(testDocumentJson));
         when(objectMapper.readValue(testDocumentJson, Document.class)).thenReturn(testDocument);
 
-        // 2. Ejecutar método
         documentProcessor.processDocuments(testJson);
 
-        // 3. Verificar interacciones
         verify(xmlGenerator, times(1)).generateXML(testDocument);
         verify(reportGenerator, times(1)).generateReport(argThat(map ->
                 map.containsKey("PAT") &&
